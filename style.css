@@ -1,30 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+:root {
+    --bg-color-light: linear-gradient(135deg, #6e8efb, #a777e3);
+    --bg-color-dark: linear-gradient(135deg, #2c3e50, #34495e);
+    --text-color-light: white;
+    --text-color-dark: white;
+    --container-bg-light: rgba(255, 255, 255, 0.1);
+    --container-bg-dark: rgba(0, 0, 0, 0.3);
+    --border-color-light: rgba(255, 255, 255, 0.18);
+    --border-color-dark: rgba(255, 255, 255, 0.05);
+    --lotto-number-bg-light: #a777e3;
+    --lotto-number-bg-dark: #3498db;
+    --button-bg-light: white;
+    --button-text-light: #6e8efb;
+    --button-bg-dark: #34495e;
+    --button-text-dark: white;
+    --input-bg-light: rgba(255, 255, 255, 0.2);
+    --input-bg-dark: rgba(255, 255, 255, 0.1);
+    --input-border-light: rgba(255, 255, 255, 0.5);
+    --input-border-dark: rgba(255, 255, 255, 0.3);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
+    background: var(--bg-color-light);
+    color: var(--text-color-light);
     text-align: center;
     margin: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background: var(--bg-color-dark);
+    color: var(--text-color-dark);
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--container-bg-light);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid var(--border-color-light);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .container {
+    background: var(--container-bg-dark);
+    border: 1px solid var(--border-color-dark);
 }
 
 h1 {
     margin-bottom: 2rem;
     font-weight: 600;
+}
+
+.theme-toggle {
+    background: var(--button-bg-light);
+    color: var(--button-text-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .theme-toggle {
+    background: var(--button-bg-dark);
+    color: var(--button-text-dark);
 }
 
 .input-container {
@@ -39,11 +88,18 @@ h1 {
     width: 60px;
     padding: 0.5rem;
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    border: 1px solid var(--input-border-light);
+    background: var(--input-bg-light);
+    color: var(--text-color-light);
     text-align: center;
     font-size: 1rem;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode #sets-input {
+    border: 1px solid var(--input-border-dark);
+    background: var(--input-bg-dark);
+    color: var(--text-color-dark);
 }
 
 .lotto-numbers {
@@ -63,13 +119,18 @@ h1 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #a777e3;
+    background: var(--lotto-number-bg-light);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .lotto-number {
+    background: var(--lotto-number-bg-dark);
 }
 
 #generate-btn {
@@ -77,15 +138,24 @@ h1 {
     font-size: 1rem;
     border: none;
     border-radius: 10px;
-    background: white;
-    color: #6e8efb;
+    background: var(--button-bg-light);
+    color: var(--button-text-light);
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
+}
+
+body.dark-mode #generate-btn {
+    background: var(--button-bg-dark);
+    color: var(--button-text-dark);
 }
 
 #generate-btn:hover {
     background: #f0f0f0;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode #generate-btn:hover {
+    background: #4a6984;
 }

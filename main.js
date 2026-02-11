@@ -1,6 +1,38 @@
 const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
 const setsInput = document.getElementById('sets-input');
+const themeToggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Function to set the theme
+function setTheme(theme) {
+    if (theme === 'dark') {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('theme', theme);
+}
+
+// Initialize theme on page load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    setTheme(savedTheme);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // If no theme saved, check system preference
+    setTheme('dark');
+} else {
+    setTheme('light');
+}
+
+// Event listener for theme toggle button
+themeToggleBtn.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+        setTheme('light');
+    } else {
+        setTheme('dark');
+    }
+});
 
 generateBtn.addEventListener('click', () => {
     lottoNumbersContainer.innerHTML = '';
