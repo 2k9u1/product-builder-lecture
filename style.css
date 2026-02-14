@@ -218,3 +218,23 @@ h1 {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px var(--button-hover-shadow);
 }
+
+/* Comment Section Styles */
+.comment-section {
+    background: var(--container-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 800px; /* Disqus can be wider */
+}
+
+.comment-section h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
